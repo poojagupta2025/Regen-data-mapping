@@ -13,9 +13,13 @@ interface AgGridTableProps {
   pageSize?: number;
   editable?: boolean;
   getContextMenuItems?: (params: any) => any;
+  context?: any;
+  getRowId?: (params: any) => string;
 }
 
-const AgGridTable: React.FC<AgGridTableProps> = ({ rowData, columnDefs, pageSize = 10, editable = true, getContextMenuItems }) => {
+const AgGridTable: React.FC<AgGridTableProps> = ({ rowData, columnDefs, pageSize = 10, editable = true, getContextMenuItems, context, getRowId }) => {
+
+
   return (
     <div className="ag-theme-alpine" style={{ height: 400, width: '100vw', maxWidth: '100vw', overflowX: 'auto' }}>
       <AgGridReact
@@ -30,6 +34,8 @@ const AgGridTable: React.FC<AgGridTableProps> = ({ rowData, columnDefs, pageSize
           editable: editable,
         }}
         getContextMenuItems={getContextMenuItems}
+        context={context}
+        getRowId={getRowId}
       />
     </div>
   );
